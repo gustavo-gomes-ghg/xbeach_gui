@@ -1,0 +1,103 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                                              %%%%%%%%
+%%%%%%%%%     XBeach parameter settings input file     %%%%%%%%
+%%%%%%%%%      Generated in XBeach GUI by GHG v1.1     %%%%%%%%
+%%%%%%%%%          Date: 12-May-2022 19:30:14          %%%%%%%%
+%%%%%%%%%                                              %%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%  Time Frame Parameters  %%%%%%%%%%%%%%%%%%%
+tstop = 1000
+CFL = 0.7
+
+%%%%%%%%%%%%%%%%%%%%%  Domain Parameters  %%%%%%%%%%%%%%%%%%%%%
+gridform = delft3d
+xyfile = Filename Unknown
+depfile = 
+thetamin = 0
+thetamax = 270
+dtheta = 20
+thetanaut = 1
+
+%%%%%%%%%%%%%%%%%%%%  Processes Parameters  %%%%%%%%%%%%%%%%%%%
+swave = 1
+lwave = 1
+flow = 1
+sedtrans = 1
+morphology = 1
+nonh = 0
+gwflow = 0
+q3d = 0
+
+%%%%%%%%%%%%%%%%%%%%  Limiters Parameters  %%%%%%%%%%%%%%%%%%%%
+hmin = 0.05
+eps = 0.005
+umin = 0.0
+hwci = 0.1
+
+%%%%%%%%%%%%%%%%%%%%  Constants Parameters  %%%%%%%%%%%%%%%%%%%
+g = 9.81
+rho = 1025
+
+%%%%%%%%%%%%%%%%%%%%%%  Flow Parameters  %%%%%%%%%%%%%%%%%%%%%%
+cf = 0.003
+C =  57
+nuh = 0.15
+nuhfac = 0
+nuhv = 1
+smag = 1
+
+%%%%%%%%%%%%%%%%%%%%%%  Wave Parameters  %%%%%%%%%%%%%%%%%%%%%%
+wavint = 1
+wci = 1
+gamma = 0.55
+gammax = 2
+alpha = 1
+n = 10
+roller = 1
+beta = 0.15
+
+%%%%%%%%%%%%%%%%%%%%%%  Wind Parameters  %%%%%%%%%%%%%%%%%%%%%%
+rhoa = 1.25
+Cd = 0.002
+windv = 5
+windth = 0
+
+%%%%%%%%%%%%%%%  Sediment Transport Parameters  %%%%%%%%%%%%%%%
+z0 = 0.006
+facsl = 0
+BRfac = 1
+rhos = 2650
+por = 0.4
+tsfac = 0.1
+facua = 0
+
+%%%%%%%%%%%%%%%%%%  Morphological Parameters  %%%%%%%%%%%%%%%%%
+morfac = 1
+morstart = 120
+wetslp = 0.3
+dryslp = 1
+scheme = 2
+break = 3
+waveform = vanthiel 
+form = 1
+thetanum = 0.5
+smax = -1
+morfacopt = 1
+sourcesink = 0
+lws = 1
+sws = 1
+
+%%%%%%%%%%%%%%%%%  Wave Boundaries Parameters  %%%%%%%%%%%%%%%%
+bcfile = Filename Unknown
+instat = 9
+dtbc = 0.5
+
+%%%%%%%%%%%%%%%%%  Flow Boundaries Parameters  %%%%%%%%%%%%%%%%
+front   = abs_1d 
+back    = wall  
+
+%%%%%%%%%%%%%%%%%%%%  Output Configuration  %%%%%%%%%%%%%%%%%%%
+outputformat = netcdf
+tstart = 0
+tintg = 60
+tintm = 3600
