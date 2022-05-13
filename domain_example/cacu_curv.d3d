@@ -1,0 +1,10 @@
+[FileInformation]
+  FileGeneratedBy  = Deltares, RGFGRID Version 6.03.00.66818 (Win64), May 12 2020, 20:17:32
+  FileCreationDate = 2021-11-22, 21:07:37
+  FileVersion      = 0.02
+[Geometry]
+  LandBoundaryFile   = --unnamed--.ldb
+  LandBoundaryFormat = TEKAL
+[Grid]
+  Type        = RGF
+  FileName    = cacu_curv.grd

@@ -1,0 +1,47 @@
+Domain, Checked : Yes       
+     Grid                  : cacu_curv.grd
+     Grid enclosure        : cacu_curv.enc
+     Bathymetry            : cacu_srtm_barragem.dep
+     Dry points            : none
+     Thin dams             : none
+
+Time frame, Checked : Yes       
+
+Processes, Checked : Yes       
+
+Initial conditions, Checked : Yes       
+
+Boundaries, Checked : Yes       
+     Boundary definitions  : none
+     Astronomical flow conditions : none
+     Astronomical corrections : none
+     Harmonic flow conditions : none
+     QH-relation flow conditions : none
+     Time series flow conditions : none
+     Transport conditions  : none
+
+Physical parameters, Checked : Yes       
+     Roughness coefficients : none
+     Hor. viscosity/diffusivity : none
+     Heat flux model data  : none
+     Sediment data         : none
+     Morphology data       : none
+     Uniform wind data     : cacu.wnd
+     Space varying wind data : none
+
+Numerical parameters, Checked : Yes       
+
+Operations, Checked : Yes       
+     Discharge definitions : none
+     Discharge data        : none
+     Dredging and dumping data : none
+
+Monitoring, Checked : Yes       
+     Observation points    : cacu.obs
+     Drogues               : none
+     Cross-sections        : none
+
+Additional parameters, Checked : Yes       
+
+Output, Checked : Yes       
+     Fourier analysis data : none

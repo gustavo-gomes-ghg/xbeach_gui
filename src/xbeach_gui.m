@@ -6,6 +6,9 @@ function xbeach_gui(varargin)
 % remove back option from flow boundaries
 % Create Warning Table of suspicious parameters value
 
+addpath(genpath('../libs/'));
+addpath(genpath('./'));
+
 % clear all;clc
 global handles figurehandleX cor pos fh kt MB_phy handles_MB MB_out UISAVE...
     UISAVEAS directory direc_place version power_zoom_scroll corLine
@@ -1451,7 +1454,7 @@ if value==1 % d3dgrid
             'taskstoexecute',5); start(cpanel);
         set(direc_place,'string',pathG);
         set(figurehandleX,'name',['XBeach GUI  --  ',fsize(pathG),'*']);
-        cd(pathG)
+        %cd(pathG)
     end
     
 elseif value==2
@@ -1559,7 +1562,7 @@ if hObj == d3ddepPB_open
             B1=bathyD3D;
             set(direc_place,'string',pathD);
             set(figurehandleX,'name',['XBeach GUI  --  ',fsize(pathD),'*']);
-            cd(pathD)
+%             cd(pathD)
         catch
             alertFigure('Wrong Bathymetry file!');
             return
@@ -3610,13 +3613,13 @@ clear ldb;
 [file,path]=uigetfile({'*.ldb','Land Boundary (*.ldb)'},'Pick a File');
 if file~=0
     try
-        ldb = readldb_CPE2([path,file]); aux=isnan(ldb);
+        ldb = readldb2([path,file]); aux=isnan(ldb);
         idx = find(aux(:,1) == 1);
         if length(idx) == length(ldb(:,1))
             error('');
         end
     catch
-        ldb = readldb_CPE([path,file]);
+        ldb = readldb([path,file]);
     end
 %     if ~isempty(aux00)
 %         ldb(aux00)=nan;
@@ -3969,7 +3972,12 @@ if countParB == 1
 else
     Parabolic_H_E_shape = plot(ax1,xp,yp,'color',rand(1,3),'linew',1.5,'marker','.','markersize',15);
 end
-Parabolic_Beach.(countParB) = [xp,yp];
+
+part_name = ['p',num2str(countParB)];
+if ~isfield(Parabolic_Beach,part_name)
+    Parabolic_Beach.(part_name) = [];
+end
+Parabolic_Beach.(part_name) = [xp,yp];
 countParB = countParB + 1;
 
 set(showTableHSUPB,'enable','on'); set(exportHSUPB,'enable','on');
@@ -4094,18 +4102,28 @@ KanT = uicontrol('unit','normalized','parent',Table_Hsu_Evans,...
 function exportHsuParabolic(hObj,evnt)
 global Parabolic_Beach countParabolic
 try
-    nameFparabolic = ['Parabolic_Beach_',num2str(countParabolic),'.ldb'];
-    fid=fopen(nameFparabolic,'w'); z=1;
-    vetor{z,1}=nameFparabolic(1:end-4); fprintf(fid,'%s\n',vetor{z,1});
-    vetor{z+1,1}=size(Parabolic_Beach,1); vetor{z+1,2}=size(Parabolic_Beach,2); 
-    fprintf(fid,'%1.0f %1.0f\n',vetor{z+1,:}); z=z+2;
-    for k=1:size(Parabolic_Beach,1)
-        vetor{z,1}=Parabolic_Beach(k,1); vetor{z,2}=Parabolic_Beach(k,2); fprintf(fid,'%4.3f %4.3f\n',vetor{z,:});
-        z=z+1;
+    fnames = fieldnames(Parabolic_Beach);
+    for i = 1 : numel(fnames)
+        nameFparabolic = ['Parabolic_Beach_',fnames{i},'.ldb'];
+        fid            = fopen(nameFparabolic,'w'); 
+        z=1;
+        vetor{z,1}     = nameFparabolic(1:end-4);     
+        vetor{z+1,1}   = size(Parabolic_Beach.(fnames{i}),1); 
+        vetor{z+1,2}   = size(Parabolic_Beach.(fnames{i}),2); 
+        fprintf(fid,'%s\n',vetor{z,1});
+        fprintf(fid,'%1.0f %1.0f\n',vetor{z+1,:}); 
+        z=z+2;
+
+        for k = 1 : size(Parabolic_Beach.(fnames{i}),1)
+            vetor{z,1}=Parabolic_Beach.(fnames{i})(k,1); 
+            vetor{z,2}=Parabolic_Beach.(fnames{i})(k,2); 
+            fprintf(fid,'%4.3f %4.3f\n',vetor{z,:});
+            z=z+1;
+        end
+        fclose(fid);
     end
-    fclose(fid);
     alertFigure(sprintf(['Export Complete!\n',nameFparabolic]));
-    countParabolic = countParabolic + 1;
+    countParabolic = i + 1;
 catch
     if ~isempty(fid)
         fclose(fid);

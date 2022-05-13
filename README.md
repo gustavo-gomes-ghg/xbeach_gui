@@ -7,4 +7,34 @@ XBeach is a two-dimensional model for wave propagation, long waves and mean flow
 _2013 Project_
 By [Gustavo Gomes](https://github.com/gustavo-gomes-ghg)
 
+##
+GUI for model setup
 ![](assets/gif/main_gui.gif)
+
+##
+GUI - Visualization Area 1
+![](assets/gif/view_analysis_1.gif)
+
+##
+GUI - Visualization Area 2 - Static Equilibrium Shoreline Analysis
+![](assets/gif/view_analysis_2.gif)
+
+##
+GUI - Visualization Area 3 - Topography profile analysis
+![](assets/gif/profile_analysis.gif)
+
+##
+GUI - Visualization Area 4 - Land Boundary
+![](assets/gif/land_boundary.gif)
+
+
+## How to use
+1) Open Matlab
+2) Move to src directory `cd src/`
+3) Run `xbeach_gui`
+
+To open visualization area and analysis tools
+1) On XBeach GUI, click on "Domain" button
+2) Load grid file. On main project directory exists a folder named 'domain_example' with Delft3D grid example of an water reservoir on Brazil. Load 'cacu_curv.grd' file
+3) Click on 'Bathymetry' button and load 'cacu_srtm.dep' file
+4) Explore the menu toolbar to change colormap, topography/bathymetry limits, and other features, draw polygons, load land boundary files (.ldb)
